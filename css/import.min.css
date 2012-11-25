@@ -1,0 +1,1 @@
+html{display:block}body{color:#ccc}#slider{overflow:hidden;background:#ffdb00;height:300px;padding-top:10px;width:100%}#slider:after{content:"";display:block;height:0;font-size:0;clear:both;visibility:hidden}#slider #js-slide li{list-style:none;float:left;width:350px}#slider #js-slide li img{margin:0 auto;display:block}#slider #js-slide li img:hover{opacity:.8}

@@ -1,0 +1,32 @@
+body {
+  color: #ccc;
+}
+#slider {
+  &:after {
+    content: ""; 
+    display: block; 
+    height: 0; 
+    font-size:0;  
+    clear: both; 
+    visibility:hidden;
+  }
+  overflow: hidden;
+  background: #ffdb00;
+  height: 300px;
+  padding-top: 10px;
+  width: 100%;
+  #js-slide {
+    li {
+      list-style: none;
+      float: left;
+      width: 350px;
+      img {
+        margin: 0 auto;
+        display: block;
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+}
