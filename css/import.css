@@ -19,6 +19,11 @@ body {
   clear: both;
   visibility: hidden;
 }
+#slider #js-slide {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+}
 #slider #js-slide li {
   list-style: none;
   float: left;

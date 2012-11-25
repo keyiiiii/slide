@@ -2,6 +2,11 @@ body {
   color: #ccc;
 }
 #slider {
+  overflow: hidden;
+  background: #ffdb00;
+  height: 300px;
+  padding-top: 10px;
+  width: 100%;
   &:after {
     content: ""; 
     display: block; 
@@ -10,12 +15,10 @@ body {
     clear: both; 
     visibility:hidden;
   }
-  overflow: hidden;
-  background: #ffdb00;
-  height: 300px;
-  padding-top: 10px;
-  width: 100%;
   #js-slide {
+    width:100%;
+    height: 250px;
+    overflow: hidden;
     li {
       list-style: none;
       float: left;

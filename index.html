@@ -18,15 +18,34 @@
   <script>__reloadServerUrl="ws://localhost:35729";</script>
   <script type="text/javascript" src="//localhost:35729/__reload/client.js"></script>
   <script type="text/javascript">
+  // $(function(){
+  //   $('#js-slide').css({left:'0',position:'absolute'});
+  //   setInterval(function(){
+  //     $('#js-slide').stop();
+  //     $('#js-slide').animate({left:'+=' + '-350' + 'px'},3000);
+  //   },300);
+  //   if($('#js-slide li:first-child').css({left:'-3500'})){
+  //     console.log("-350");
+  //   };
+  // });
+
   $(function(){
-    $('#js-slide').css({left:'0',position:'absolute'});
+    $('#js-slide').css({position:'absolute'});
+    //アニメーションスピード
+    var scrollSpeed = 1;
+    //画像サイズ
+    // var imgWidth = window.innerWidth;
+    var imgWidth = 350;
+    //画像の初期位置
+    var posX = 0;
+    //ループ処理
     setInterval(function(){
-      $('#js-slide').stop();
-      $('#js-slide').animate({left:'+=' + '-350' + 'px'},3000);
-    },300);
-    if($('#js-slide li:first-child').css({left:'-3500'})){
-      console.log("-350");
-    };
+      //画像のサイズまで移動したら0に戻る。
+      if (posX >= imgWidth) posX= 0;
+      //scrollSpeed分移動
+      posX += scrollSpeed;
+      $('#js-slide').css("right",posX+"px");
+    }, 1);
   });
   </script>
 </head>
