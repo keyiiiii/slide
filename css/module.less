@@ -1,35 +1,69 @@
-body {
-  color: #ccc;
-}
 #slider {
-  overflow: hidden;
-  background: #ffdb00;
+  background: #ffde00;
+  width:100%;
   height: 300px;
   padding-top: 10px;
-  width: 100%;
-  &:after {
-    content: ""; 
-    display: block; 
-    height: 0; 
-    font-size:0;  
-    clear: both; 
-    visibility:hidden;
-  }
-  #js-slide {
-    width:100%;
+}
+
+#loopslider {
+  margin: 0 auto;
+  // width: 2000px;
+  width: 500px;
+  height: 250px;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  ul {
     height: 250px;
+    float: left;
+    display: inline;
     overflow: hidden;
-    li {
-      list-style: none;
-      float: left;
-      width: 350px;
-      img {
-        margin: 0 auto;
-        display: block;
-        &:hover {
-          opacity: 0.8;
-        }
-      }
+    display: inline-block;
+    overflow: hidden;
+    &:after {
+      content: "";
+      height: 0;
+      clear: both;
+      display: block;
+      visibility: hidden;
     }
+    li {
+      width: 360px;
+      height: 250px;
+      float: left;
+      display: inline;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+  }
+  #loopleft {
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 100px;
+    line-height: 100px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    background: #555;
+    position: absolute;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 99;
+  }
+  #loopright {
+    top: 0;
+    right: 0;
+    width: 20px;
+    height: 100px;
+    line-height: 100px;
+    color: #fff;
+    text-align: center;
+    font-weight: bold;
+    background: #555;
+    position: absolute;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 99;
   }
 }
