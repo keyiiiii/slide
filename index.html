@@ -36,6 +36,7 @@
 
       var loopWidth = (listWidth)*(listCount);
 
+
       $('#loopslider_wrap').css({
         top: '0',
         left: '0',
@@ -54,6 +55,15 @@
 
       function timerLeft(){
         setTimer = setInterval(function(){loopPositionLeft()},0);
+
+        // #loopslider_wrapのleftの位置取得
+        // TODO: if文うまくいかない
+        if($('#loopslider_wrap').css("left") == (listWidth) + 'px'){
+          console.log("-100px");
+        };
+
+
+
       };
 
       function loopPositionLeft(){
