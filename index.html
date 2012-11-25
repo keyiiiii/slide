@@ -18,44 +18,122 @@
   <script>__reloadServerUrl="ws://localhost:35729";</script>
   <script type="text/javascript" src="//localhost:35729/__reload/client.js"></script>
   <script type="text/javascript">
-  // $(function(){
-  //   $('#js-slide').css({left:'0',position:'absolute'});
-  //   setInterval(function(){
-  //     $('#js-slide').stop();
-  //     $('#js-slide').animate({left:'+=' + '-350' + 'px'},3000);
-  //   },300);
-  //   if($('#js-slide li:first-child').css({left:'-3500'})){
-  //     console.log("-350");
-  //   };
-  // });
 
   $(function(){
-    $('#js-slide').css({position:'absolute'});
-    //アニメーションスピード
-    var scrollSpeed = 1;
-    //画像サイズ
-    // var imgWidth = window.innerWidth;
-    var imgWidth = 350;
-    //画像の初期位置
-    var posX = 0;
-    //ループ処理
-    setInterval(function(){
-      //画像のサイズまで移動したら0に戻る。
-      if (posX >= imgWidth) posX= 0;
-      //scrollSpeed分移動
-      posX += scrollSpeed;
-      $('#js-slide').css("right",posX+"px");
-    }, 1);
+    var moveInterval = 1;
+    var slideTime = 10;
+
+    $('#loopslider').each(function(){
+      var loopsliderWidth = $(this).width();
+      var loopsliderHeight = $(this).height();
+      $(this).children('ul').wrapAll('<div id="loopslider_wrap"></div>');
+      $('#loopslider').append('<div id="loopleft">&lt;</div><div id="loopright">&gt;</div>');
+      $('#loopleft,#loopright').css({opacity:'0.5'});
+
+      var listWidth = $('#loopslider_wrap').children('ul').children('li').width();
+
+      var listCount = $('#loopslider_wrap').children('ul').children('li').length;
+
+      var loopWidth = (listWidth)*(listCount);
+
+
+      var thumbnailCount = (listWidth)*(slideTime);
+console.log(thumbnailCount);
+
+
+      $('#loopslider_wrap').css({
+        top: '0',
+        left: '0',
+        width: ((loopWidth) * 2),
+        height: (loopsliderHeight),
+        overflow: 'hidden',
+        position: 'absolute'
+      });
+
+      $('#loopslider_wrap ul').css({
+        width: (loopWidth)
+      });
+      $('#loopslider_wrap ul').clone().appendTo('#loopslider_wrap');
+
+      timerLeft();
+
+      function timerLeft(){
+        setTimer = setInterval(function(){loopPositionLeft()},0);
+      };
+
+      function loopPositionLeft(){
+        clearInterval(setTimer);
+        $('#loopslider_wrap').stop().animate({left:'-=' + (moveInterval) + 'px'},slideTime,'linear',function(){
+          var posLeft = parseInt($('#loopslider_wrap').css('left'));
+          var widthCal = (loopWidth)-((loopWidth)*2);
+
+          if (posLeft === widthCal) {
+            $('#loopslider_wrap').css({left:'0'});
+          }
+          timerLeft();
+
+          $(this).click(function(){
+            $('#loopslider_wrap').stop();
+            clearInterval(setTimer);
+          },function(){
+            loopPositionLeft();
+          });
+        });
+
+      };
+
+
+      $('#loopright').click(function(){
+        $('#loopslider_wrap').stop();
+        clearInterval(setTimer);
+        timerRight();
+      });
+
+      function timerRight(){
+        setTimer = setInterval(function(){loopPositionRight()},0);
+      };
+
+      function loopPositionRight(){
+        clearInterval(setTimer);
+        $('#loopslider_wrap').stop().animate({left:'+=' + (moveInterval) + 'px'},slideTime,'linear',function(){
+          var posLeft = parseInt($('#loopslider_wrap').css('left'));
+          var widthCal = (loopWidth)-((loopWidth)*2);
+          if (posLeft === 0) {
+            $('#loopslider_wrap').css({left:(-(loopWidth))});
+          }
+          timerRight();
+
+          $(this).click(function(){
+            $('#loopslider_wrap').stop();
+            clearInterval(setTimer);
+          },function(){
+            loopPositionRight();
+          });
+        });
+
+      };
+
+      $('#loopleft').click(function(){
+        $('#loopslider_wrap').stop();
+        clearInterval(setTimer);
+        timerLeft();
+      });
+
+
+    });
   });
   </script>
 </head>
 <body>
   <div id="slider">
-    <ul id="js-slide">
-      <li><img src="img/main01.png" width="340" height="250" /></li>
-      <li><img src="img/main02.png" width="340" height="250" /></li>
-      <li><img src="img/main03.png" width="340" height="250" /></li>
-    </ul>
+    <div id="loopslider">
+      <ul>
+        <li><a href="#"><img src="http://dummyimage.com/340x250/000/fff.png&text=1" width="340" height="250" /></a></li>
+        <li><a href="#"><img src="http://dummyimage.com/340x250/000/fff.png&text=2" width="340" height="250" /></a></li>
+        <li><a href="#"><img src="http://dummyimage.com/340x250/000/fff.png&text=3" width="340" height="250" /></a></li>
+        <li><a href="#"><img src="http://dummyimage.com/340x250/000/fff.png&text=4" width="340" height="250" /></a></li>
+      </ul>
+    </div>
   </div>
 </body>
 </html>
