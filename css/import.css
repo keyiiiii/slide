@@ -67,3 +67,19 @@ html {
   cursor: pointer;
   z-index: 99;
 }
+#control {
+  width: 100px;
+  margin: 0 auto;
+  font-size: 30px;
+}
+#control:after {
+  content: "";
+  height: 0;
+  clear: both;
+  display: block;
+  visibility: hidden;
+}
+#control li {
+  float: left;
+  display: block;
+}

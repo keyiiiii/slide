@@ -36,11 +36,6 @@
 
       var loopWidth = (listWidth)*(listCount);
 
-
-//       var thumbnailCount = (listWidth)*(slideTime);
-// console.log(thumbnailCount);
-
-
       $('#loopslider_wrap').css({
         top: '0',
         left: '0',
@@ -78,6 +73,7 @@
           },function(){
             loopPositionLeft();
           });
+
         });
 
       };
@@ -120,6 +116,24 @@
       });
 
 
+
+      //test
+      $('#control li a').click(function(){
+        $('#loopslider_wrap').stop().animate({left:'0px'},function(){
+          var posLeft = parseInt($('#loopslider_wrap').css('left'));
+          var widthCal = (loopWidth)-((loopWidth)*2);
+
+          if (posLeft === widthCal) {
+            $('#loopslider_wrap').css({left:'0'});
+          }
+          timerLeft();
+
+
+        });
+      });
+
+
+      
     });
   });
   </script>
@@ -134,6 +148,12 @@
         <li><a href="#"><img src="http://dummyimage.com/340x250/000/fff.png&text=4" width="340" height="250" /></a></li>
       </ul>
     </div>
+    <ul id="control">
+      <li><a href="#">●</a></li>
+      <li><a href="#">●</a></li>
+      <li><a href="#">●</a></li>
+      <li><a href="#">●</a></li>
+    </ul>
   </div>
 </body>
 </html>
