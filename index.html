@@ -28,7 +28,7 @@
     console.log(controlLength);
 
 
-      
+
 
     $('#loopslider').each(function(){
       var loopsliderWidth = $(this).width();
@@ -134,14 +134,18 @@
 
 
 
-      //test
+      //#control li a を押すと 0 に戻る
       $('#control li a').click(function(){
         $('#loopslider_wrap').stop().animate({left:'0px'},function(){
+          // 0
           var posLeft = parseInt($('#loopslider_wrap').css('left'));
+
+          // ?
           var widthCal = (loopWidth)-((loopWidth)*2);
 
+
           if (posLeft === widthCal) {
-            $('#loopslider_wrap').css({left:'0'});
+            $('#loopslider_wrap').css({left: (controlLength) + "-" + (listWidth) });
           }
           timerLeft();
 
