@@ -23,6 +23,13 @@
     var moveInterval = 1;
     var slideTime = 10;
 
+    // control li の数を求める
+    var controlLength = $('#control li').length;
+    console.log(controlLength);
+
+
+      
+
     $('#loopslider').each(function(){
       var loopsliderWidth = $(this).width();
       var loopsliderHeight = $(this).height();
@@ -57,9 +64,9 @@
         setTimer = setInterval(function(){loopPositionLeft()},0);
 
         // #loopslider_wrapのleftの位置取得
-        // TODO: if文うまくいかない
-        if($('#loopslider_wrap').css("left") == (listWidth) + 'px'){
-          console.log("-100px");
+        // TODO: 
+        if($('#loopslider_wrap').css("left") == '-' + (listWidth) + 'px'){
+          console.log(listWidth);
         };
 
 
@@ -141,7 +148,6 @@
 
         });
       });
-
 
       
     });
